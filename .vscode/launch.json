@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Svelte/Bun: Launch Chrome",
+      "url": "http://localhost:5173", // <-- IMPORTANT: Change this port if yours is different
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
