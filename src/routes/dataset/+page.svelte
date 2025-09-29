@@ -4,7 +4,7 @@
       Tasks
     </h1>
     <p class="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-      This is the tasks page.
+      This is the dataset page.
     </p>
   </div>
 </main>
