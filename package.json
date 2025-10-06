@@ -16,6 +16,8 @@
 		"test": "npm run test:unit -- --run"
 	},
 	"dependencies": {
+		"@threlte/core": "^8.1.5",
+		"@threlte/extras": "^9.5.4",
 		"three": "0.179.1"
 	},
 	"devDependencies": {
@@ -30,6 +32,7 @@
 		"@tailwindcss/forms": "^0.5.10",
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.11",
+		"@types/three": "^0.180.0",
 		"@vitest/browser": "^3.2.4",
 		"bits-ui": "^2.9.1",
 		"clsx": "^2.1.1",
