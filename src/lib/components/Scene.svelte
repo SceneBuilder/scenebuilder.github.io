@@ -1,6 +1,6 @@
 <script lang="ts">
   import { T } from '@threlte/core'
-  import { GLTF, OrbitControls } from '@threlte/extras'
+  import { GLTF, OrbitControls, Sky } from '@threlte/extras'
 
   export let url: string
   export let cameraPosition: [number, number, number] = [10, 8, 10]
@@ -13,8 +13,10 @@
 </script>
 
 <T.PerspectiveCamera makeDefault position={cameraPosition} fov={cameraFov}>
-  <OrbitControls enableDamping dampingFactor={0.05} />
+  <OrbitControls enableDamping dampingFactor={0.05} autoRotate />
 </T.PerspectiveCamera>
+
+<Sky elevation={0.5} />
 
 <T.DirectionalLight
   position={[10, 10, 5]}
