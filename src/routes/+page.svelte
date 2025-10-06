@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Abstract from '$lib/content/abstract.md';
+	import { Canvas } from '@threlte/core';
+	import Scene from '$lib/components/Scene.svelte';
 </script>
 
 <main class="grid grid-cols-[1fr,min(80ch,100%),1fr] gap-y-8 py-8">
@@ -28,8 +30,15 @@
 	<div class="col-span-3 px-4">
 		<section class="space-y-6">
 			<h2 class="text-center text-2xl font-bold tracking-tighter sm:text-3xl">Examples</h2>
-			<div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-				<!-- Example content will go here -->
+			<div class="mx-auto max-w-6xl space-y-8">
+				<div class="space-y-4">
+					<h3 class="text-center text-xl font-semibold">Classroom</h3>
+					<div class="mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background">
+						<Canvas>
+							<Scene url="/scenes/single_room/classroom.glb" />
+						</Canvas>
+					</div>
+				</div>
 			</div>
 		</section>
 	</div>

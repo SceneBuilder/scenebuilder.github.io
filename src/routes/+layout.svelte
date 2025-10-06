@@ -32,7 +32,7 @@
 	<nav class="flex gap-4 sm:gap-6">
 		<Button variant="link" href="https://TODO.com" class="text-sm font-medium">arXiv</Button>
 		<Button variant="link" href="https://TODO.com" class="text-sm font-medium">GitHub</Button>
-		<Button variant="link" href="https://TODO.com" class="text-sm font-medium">HuggingFace</Button>
+		<!-- <Button variant="link" href="https://TODO.com" class="text-sm font-medium">HuggingFace</Button> -->
 	</nav>
 </header>
 
