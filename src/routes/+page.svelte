@@ -39,6 +39,73 @@
     }
   ];
 
+  let additionalExamples = [
+    {
+      name: 'Office',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Workspace', icon: 'mdi:office-building' },
+        { name: 'Modern', icon: 'mdi:home-modern' }
+      ]
+    },
+    {
+      name: 'Living Room',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Comfort', icon: 'mdi:sofa' },
+        { name: 'Family', icon: 'mdi:home-heart' }
+      ]
+    },
+    {
+      name: 'Bedroom',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Rest', icon: 'mdi:bed' },
+        { name: 'Private', icon: 'mdi:lock' }
+      ]
+    },
+    {
+      name: 'Bathroom',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Clean', icon: 'mdi:shower' },
+        { name: 'Modern', icon: 'mdi:home-modern' }
+      ]
+    },
+    {
+      name: 'Garage',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Storage', icon: 'mdi:garage' },
+        { name: 'Utility', icon: 'mdi:tools' }
+      ]
+    },
+    {
+      name: 'Basement',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Storage', icon: 'mdi:home-floor-b' },
+        { name: 'Recreation', icon: 'mdi:gamepad-variant' }
+      ]
+    },
+    {
+      name: 'Garage',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Storage', icon: 'mdi:garage' },
+        { name: 'Utility', icon: 'mdi:tools' }
+      ]
+    },
+    {
+      name: 'Basement',
+      thumbnail: '/placeholder.jpg',
+      tags: [
+        { name: 'Storage', icon: 'mdi:home-floor-b' },
+        { name: 'Recreation', icon: 'mdi:gamepad-variant' }
+      ]
+    },
+  ];
+
   let scenes = $state([
     {
       title: 'Classroom',
@@ -97,8 +164,7 @@
             <div
               class="flex h-48 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
             >
-              <span class="text-2xl font-bold text-blue-600 dark:text-blue-300">{project.name}</span
-              >
+              <!-- <span class="text-2xl font-bold text-blue-600 dark:text-blue-300">{project.name}</span> -->
             </div>
             <div
               class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -121,6 +187,48 @@
                       class="bg-opacity-70 flex items-center gap-1 rounded-full bg-black px-2 py-1 text-xs text-white backdrop-blur-sm"
                     >
                       <span>{tag.name}</span>
+                    </div>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+          </button>
+        {/each}
+      </div>
+    </section>
+    <div class="m-3"></div>
+    <section class="space-y-6">
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+        {#each additionalExamples as project}
+          <button
+            class="group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800"
+          >
+            <div
+              class="flex h-24 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
+            >
+              <!-- <span class="text-sm font-bold text-blue-600 dark:text-blue-300">{project.name}</span> -->
+            </div>
+            <div
+              class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            ></div>
+            <div class="absolute top-0 left-0 p-2">
+              <h3
+                class="text-xs font-semibold text-blue-600 drop-shadow-[0_0_9px_rgba(0,0,0,0.9)] group-hover:text-white dark:text-blue-300"
+              >
+                {project.name}
+              </h3>
+            </div>
+
+            {#if project.tags && project.tags.length > 0}
+              <div
+                class="absolute bottom-0 left-0 p-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              >
+                <div class="flex flex-wrap gap-1">
+                  {#each project.tags as tag}
+                    <div
+                      class="bg-opacity-70 flex items-center gap-1 rounded-full bg-black px-1 py-0.5 text-xs text-white backdrop-blur-sm"
+                    >
+                      <span class="text-xs">{tag.name}</span>
                     </div>
                   {/each}
                 </div>
