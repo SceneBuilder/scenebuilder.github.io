@@ -2,20 +2,30 @@
   import Abstract from '$lib/content/abstract.md';
   import { Canvas } from '@threlte/core';
   import Scene from '$lib/components/Scene.svelte';
-  import { Pane, Checkbox } from 'svelte-tweakpane-ui';
+  import { Pane, Checkbox, Button } from 'svelte-tweakpane-ui';
 
   let scenes = $state([
     {
       title: 'Classroom',
       url: '/scenes/single_room/classroom.glb',
       mode: 'firstPerson' as 'orbit' | 'firstPerson',
+      canvasContainer: undefined as HTMLElement | undefined,
     },
     {
       title: 'Bar',
       url: '/scenes/single_room/bar.glb',
       mode: 'orbit' as 'orbit' | 'firstPerson',
+      canvasContainer: undefined as HTMLElement | undefined,
     },
   ]);
+
+  function toggleFullscreen(element: HTMLElement) {
+    if (!document.fullscreenElement) {
+      element.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  }
 </script>
 
 <main class="grid grid-cols-[1fr,min(80ch,100%),1fr] gap-y-8 py-8">
@@ -49,7 +59,7 @@
           {@const isWalkMode = scene.mode === 'firstPerson'}
           <div class="space-y-4">
             <h3 class="text-center text-xl font-semibold">{scene.title}</h3>
-            <div class="relative mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background">
+            <div class="relative mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background" bind:this={scenes[index].canvasContainer}>
               <Canvas>
                 <Scene url={scene.url} bind:mode={scene.mode} />
               </Canvas>
@@ -59,6 +69,10 @@
                     value={isWalkMode}
                     on:change={(e) => scene.mode = e.detail.value ? 'firstPerson' : 'orbit'}
                     label="Walk Mode"
+                  />
+                  <Button
+                    on:click={() => scenes[index].canvasContainer && toggleFullscreen(scenes[index].canvasContainer)}
+                    title="Fullscreen"
                   />
                 </Pane>
               </div>
