@@ -51,6 +51,51 @@
     </section>
   </div>
 
+  <div class="col-start-2 px-4">
+    <section class="space-y-6">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {#each [
+          { name: 'Classroom', thumbnail: '/scenes/single_room/classroom.glb', tags: [{ name: 'Indoor', icon: 'mdi:home' }, { name: '3D Scene', icon: 'mdi:cube-outline' }] },
+          { name: 'Bar', thumbnail: '/scenes/single_room/bar.glb', tags: [{ name: 'Indoor', icon: 'mdi:home' }, { name: '3D Scene', icon: 'mdi:cube-outline' }] },
+          { name: 'Library', thumbnail: '/placeholder.jpg', tags: [{ name: 'Indoor', icon: 'mdi:home' }, { name: 'Study', icon: 'mdi:book' }] },
+          { name: 'Kitchen', thumbnail: '/placeholder.jpg', tags: [{ name: 'Indoor', icon: 'mdi:home' }, { name: 'Cooking', icon: 'mdi:chef-hat' }] }
+        ] as project}
+          <button
+            class="group relative block overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
+          >
+            <div class="h-48 w-full bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 flex items-center justify-center">
+              <span class="text-2xl font-bold text-blue-600 dark:text-blue-300">{project.name}</span>
+            </div>
+            <div
+              class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            ></div>
+            <div
+              class="absolute top-0 left-0 p-4"
+            >
+              <h3 class="font-semibold text-blue-600 dark:text-blue-300 group-hover:text-white drop-shadow-[0_0_9px_rgba(0,0,0,0.9)]">{project.name}</h3>
+            </div>
+
+            {#if project.tags && project.tags.length > 0}
+              <div
+                class="absolute bottom-0 left-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              >
+                <div class="flex flex-wrap gap-2">
+                  {#each project.tags as tag}
+                    <div
+                      class="flex items-center gap-1 rounded-full bg-black bg-opacity-70 px-2 py-1 text-xs text-white backdrop-blur-sm"
+                    >
+                      <span>{tag.name}</span>
+                    </div>
+                  {/each}
+                </div>
+              </div>
+            {/if}
+          </button>
+        {/each}
+      </div>
+    </section>
+  </div>
+
   <div class="col-span-3 px-4">
     <section class="space-y-6">
       <h2 class="text-center text-2xl font-bold tracking-tighter sm:text-3xl">Examples</h2>
