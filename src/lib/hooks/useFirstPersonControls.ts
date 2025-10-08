@@ -8,6 +8,8 @@ interface FirstPersonControlsOptions {
   walkSpeed?: number;
   runSpeed?: number;
   speedLerpFactor?: number;
+  accelerationFactor?: number;
+  decelerationFactor?: number;
   cameraPosition?: [number, number, number];
 }
 
@@ -16,14 +18,17 @@ export function useFirstPersonControls(
   options: FirstPersonControlsOptions = {}
 ) {
   const {
-    walkSpeed = 300,
-    runSpeed = 600,
+    walkSpeed = 5,
+    runSpeed = 10,
     speedLerpFactor = 8,
+    accelerationFactor = 5,
+    decelerationFactor = 8,
     cameraPosition = [0, 1.6, 5],
   } = options;
 
   let controls: PointerLockControls;
   let velocity = new THREE.Vector3();
+  let currentVelocity = new THREE.Vector3();
   let direction = new THREE.Vector3();
   let currentSpeed = walkSpeed;
 
@@ -95,7 +100,6 @@ export function useFirstPersonControls(
       // Movement update loop
       const update = () => {
         const delta = clock.getDelta();
-        velocity.set(0, 0, 0);
 
         // Calculate movement direction
         direction.z = Number(keyState.forward) - Number(keyState.backward);
@@ -106,16 +110,25 @@ export function useFirstPersonControls(
         const targetSpeed = keyState.shift ? runSpeed : walkSpeed;
         currentSpeed += (targetSpeed - currentSpeed) * Math.min(1, delta * speedLerpFactor);
 
-        // Apply movement
+        // Calculate target velocity
+        velocity.set(0, 0, 0);
         if (keyState.forward || keyState.backward) {
-          velocity.z -= direction.z * currentSpeed * delta;
+          velocity.z = direction.z * currentSpeed;
         }
         if (keyState.left || keyState.right) {
-          velocity.x -= direction.x * currentSpeed * delta;
+          velocity.x = direction.x * currentSpeed;
         }
 
-        controls.moveRight(-velocity.x * delta);
-        controls.moveForward(-velocity.z * delta);
+        // Smooth acceleration/deceleration
+        const hasInput = keyState.forward || keyState.backward || keyState.left || keyState.right;
+        const lerpFactor = hasInput ? accelerationFactor : decelerationFactor;
+
+        currentVelocity.x += (velocity.x - currentVelocity.x) * Math.min(1, delta * lerpFactor);
+        currentVelocity.z += (velocity.z - currentVelocity.z) * Math.min(1, delta * lerpFactor);
+
+        // Apply movement
+        controls.moveRight(currentVelocity.x * delta);
+        controls.moveForward(currentVelocity.z * delta);
 
         invalidate();
         requestAnimationFrame(update);
