@@ -2,7 +2,7 @@
   import Abstract from '$lib/content/abstract.md';
   import { Canvas } from '@threlte/core';
   import Scene from '$lib/components/Scene.svelte';
-  import { Pane, List } from 'svelte-tweakpane-ui';
+  import { Pane, Checkbox } from 'svelte-tweakpane-ui';
 
   let scenes = $state([
     {
@@ -46,6 +46,7 @@
       <h2 class="text-center text-2xl font-bold tracking-tighter sm:text-3xl">Examples</h2>
       <div class="mx-auto max-w-6xl space-y-8">
         {#each scenes as scene, index}
+          {@const isWalkMode = scene.mode === 'firstPerson'}
           <div class="space-y-4">
             <h3 class="text-center text-xl font-semibold">{scene.title}</h3>
             <div class="relative mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background">
@@ -54,7 +55,11 @@
               </Canvas>
               <div class="absolute right-2 top-2 z-10">
                 <Pane position="inline" title="Controls">
-                  <List bind:value={scene.mode} options={{ orbit: 'Orbit', firstPerson: 'Walk' }} />
+                  <Checkbox
+                    value={isWalkMode}
+                    on:change={(e) => scene.mode = e.detail.value ? 'firstPerson' : 'orbit'}
+                    label="Walk Mode"
+                  />
                 </Pane>
               </div>
             </div>
