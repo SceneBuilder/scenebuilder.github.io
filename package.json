@@ -18,6 +18,7 @@
   "dependencies": {
     "@threlte/core": "^8.1.5",
     "@threlte/extras": "^9.5.4",
+    "svelte-tweakpane-ui": "^1.5.10",
     "three": "0.179.1"
   },
   "devDependencies": {

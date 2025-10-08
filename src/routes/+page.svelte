@@ -2,19 +2,20 @@
   import Abstract from '$lib/content/abstract.md';
   import { Canvas } from '@threlte/core';
   import Scene from '$lib/components/Scene.svelte';
+  import { Pane, List } from 'svelte-tweakpane-ui';
 
-  const scenes = [
+  let scenes = $state([
     {
       title: 'Classroom',
       url: '/scenes/single_room/classroom.glb',
-      mode: 'firstPerson' as const,
+      mode: 'firstPerson' as 'orbit' | 'firstPerson',
     },
     {
       title: 'Bar',
       url: '/scenes/single_room/bar.glb',
-      mode: 'orbit' as const,
+      mode: 'orbit' as 'orbit' | 'firstPerson',
     },
-  ];
+  ]);
 </script>
 
 <main class="grid grid-cols-[1fr,min(80ch,100%),1fr] gap-y-8 py-8">
@@ -44,13 +45,18 @@
     <section class="space-y-6">
       <h2 class="text-center text-2xl font-bold tracking-tighter sm:text-3xl">Examples</h2>
       <div class="mx-auto max-w-6xl space-y-8">
-        {#each scenes as scene}
+        {#each scenes as scene, index}
           <div class="space-y-4">
             <h3 class="text-center text-xl font-semibold">{scene.title}</h3>
-            <div class="mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background">
+            <div class="relative mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background">
               <Canvas>
-                <Scene url={scene.url} mode={scene.mode} />
+                <Scene url={scene.url} bind:mode={scene.mode} />
               </Canvas>
+              <div class="absolute right-2 top-2 z-10">
+                <Pane position="inline" title="Controls">
+                  <List bind:value={scene.mode} options={{ orbit: 'Orbit', firstPerson: 'Walk' }} />
+                </Pane>
+              </div>
             </div>
           </div>
         {/each}
