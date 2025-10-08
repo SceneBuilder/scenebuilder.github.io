@@ -20,7 +20,7 @@
 
   // Initialize first-person controls
   const firstPersonControls = useFirstPersonControls(mode, {
-    cameraPosition: finalCameraPosition
+    cameraPosition: finalCameraPosition,
   });
 
   function onGLTFLoad(gltf: any) {

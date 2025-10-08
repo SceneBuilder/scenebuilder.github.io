@@ -19,7 +19,7 @@ export function useFirstPersonControls(
     walkSpeed = 300,
     runSpeed = 600,
     speedLerpFactor = 8,
-    cameraPosition = [0, 1.6, 5]
+    cameraPosition = [0, 1.6, 5],
   } = options;
 
   let controls: PointerLockControls;
@@ -32,7 +32,7 @@ export function useFirstPersonControls(
     backward: false,
     left: false,
     right: false,
-    shift: false
+    shift: false,
   };
 
   function updateKeyState(code: string, pressed: boolean) {
@@ -134,6 +134,6 @@ export function useFirstPersonControls(
 
   return {
     controls,
-    keyState
+    keyState,
   };
 }
