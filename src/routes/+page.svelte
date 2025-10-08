@@ -2,17 +2,18 @@
 	import Abstract from '$lib/content/abstract.md';
 	import { Canvas } from '@threlte/core';
 	import Scene from '$lib/components/Scene.svelte';
+	import FirstPersonScene from '$lib/components/FirstPersonScene.svelte';
 
 	const scenes = [
 		{
 			title: 'Classroom',
 			url: '/scenes/single_room/classroom.glb',
-			// extra_info: TODO
+			type: 'firstPerson'
 		},
 		{
 			title: 'Bar',
 			url: '/scenes/single_room/bar.glb',
-			// extra_info: TODO
+			type: 'orbit'
 		},
 	];
 </script>
@@ -49,7 +50,11 @@
 						<h3 class="text-center text-xl font-semibold">{scene.title}</h3>
 						<div class="mx-auto h-96 w-full max-w-4xl rounded-lg border bg-background">
 							<Canvas>
-								<Scene url={scene.url} />
+								{#if scene.type === 'firstPerson'}
+									<FirstPersonScene url={scene.url} />
+								{:else}
+									<Scene url={scene.url} />
+								{/if}
 							</Canvas>
 						</div>
 					</div>
