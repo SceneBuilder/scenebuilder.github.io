@@ -1,6 +1,19 @@
 import { mdsvex } from 'mdsvex';
-import adapter from '@sveltejs/adapter-static';
+import adapterStatic from '@sveltejs/adapter-static';
+import adapterCloudflare from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+const targetAdapter = process.env.SVELTE_ADAPTER?.toLowerCase();
+const adapter =
+  targetAdapter === 'cloudflare'
+    ? adapterCloudflare()
+    : adapterStatic({
+        pages: 'build',
+        assets: 'build',
+        fallback: undefined,
+        precompress: false,
+        strict: true,
+      });
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -13,13 +26,7 @@ const config = {
     }),
   ],
   kit: {
-    adapter: adapter({
-      pages: 'build',
-      assets: 'build',
-      fallback: undefined,
-      precompress: false,
-      strict: true,
-    }),
+    adapter,
     alias: {
       '$lib/*': './src/lib/*',
     },
