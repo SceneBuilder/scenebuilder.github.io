@@ -3,110 +3,197 @@ export type ExampleTag = {
   icon: string;
 };
 
-export type Example = {
+export type ExampleCategory = {
   name: string;
   thumbnail: string;
   tags: ExampleTag[];
 };
 
-export const projectExamples: Example[] = [
+export type ExampleScene = {
+  name: string;
+  category: ExampleCategory['name'];
+  thumbnail: string;
+  tags: ExampleTag[];
+};
+
+export const exampleCategories: ExampleCategory[] = [
   {
     name: 'Residential',
-    thumbnail: '/scenes/single_room/classroom.glb',
+    thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Indoor', icon: 'mdi:home' },
-      { name: '3D Scene', icon: 'mdi:cube-outline' }
+      { name: 'Living Spaces', icon: 'mdi:home' },
+      { name: 'Comfort', icon: 'mdi:sofa' }
     ]
   },
   {
     name: 'Commercial',
-    thumbnail: '/scenes/single_room/bar.glb',
+    thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Indoor', icon: 'mdi:home' },
-      { name: '3D Scene', icon: 'mdi:cube-outline' }
+      { name: 'Business', icon: 'mdi:briefcase' },
+      { name: 'Hospitality', icon: 'mdi:silverware-fork-knife' }
     ]
   },
   {
     name: 'Industrial',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Indoor', icon: 'mdi:home' },
-      { name: 'Study', icon: 'mdi:book' }
+      { name: 'Production', icon: 'mdi:factory' },
+      { name: 'Logistics', icon: 'mdi:warehouse' }
     ]
   },
   {
     name: 'Educational',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Indoor', icon: 'mdi:home' },
-      { name: 'Cooking', icon: 'mdi:chef-hat' }
+      { name: 'Learning', icon: 'mdi:school' },
+      { name: 'Community', icon: 'mdi:account-group' }
     ]
   }
 ];
 
-export const additionalExamples: Example[] = [
+export const exampleScenes: ExampleScene[] = [
   {
-    name: 'Office',
+    name: 'Single Family Home',
+    category: 'Residential',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Workspace', icon: 'mdi:office-building' },
-      { name: 'Modern', icon: 'mdi:home-modern' }
-    ]
-  },
-  {
-    name: 'Living Room',
-    thumbnail: '/placeholder.jpg',
-    tags: [
-      { name: 'Comfort', icon: 'mdi:sofa' },
-      { name: 'Family', icon: 'mdi:home-heart' }
-    ]
-  },
-  {
-    name: 'Bedroom',
-    thumbnail: '/placeholder.jpg',
-    tags: [
-      { name: 'Rest', icon: 'mdi:bed' },
+      { name: 'Suburban', icon: 'mdi:home-group' },
       { name: 'Private', icon: 'mdi:lock' }
     ]
   },
   {
-    name: 'Bathroom',
+    name: 'Apartment',
+    category: 'Residential',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Clean', icon: 'mdi:shower' },
-      { name: 'Modern', icon: 'mdi:home-modern' }
+      { name: 'Urban', icon: 'mdi:city' },
+      { name: 'Compact', icon: 'mdi:domain' }
     ]
   },
   {
-    name: 'Garage',
+    name: 'Dormitory',
+    category: 'Residential',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Storage', icon: 'mdi:garage' },
-      { name: 'Utility', icon: 'mdi:tools' }
+      { name: 'Shared', icon: 'mdi:account-group' },
+      { name: 'Student', icon: 'mdi:school' }
     ]
   },
   {
-    name: 'Basement',
+    name: 'Hotel',
+    category: 'Residential',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Storage', icon: 'mdi:home-floor-b' },
-      { name: 'Recreation', icon: 'mdi:gamepad-variant' }
+      { name: 'Hospitality', icon: 'mdi:briefcase-account' },
+      { name: 'Suites', icon: 'mdi:bed-king' }
     ]
   },
   {
-    name: 'Garage',
+    name: 'Corporate Office',
+    category: 'Commercial',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Storage', icon: 'mdi:garage' },
-      { name: 'Utility', icon: 'mdi:tools' }
+      { name: 'Workspace', icon: 'mdi:office-building' },
+      { name: 'Open Plan', icon: 'mdi:view-grid' }
     ]
   },
   {
-    name: 'Basement',
+    name: 'Hospital',
+    category: 'Commercial',
     thumbnail: '/placeholder.jpg',
     tags: [
-      { name: 'Storage', icon: 'mdi:home-floor-b' },
-      { name: 'Recreation', icon: 'mdi:gamepad-variant' }
+      { name: 'Healthcare', icon: 'mdi:hospital' },
+      { name: 'Critical', icon: 'mdi:alert-circle' }
+    ]
+  },
+  {
+    name: 'Restaurant',
+    category: 'Commercial',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Dining', icon: 'mdi:silverware-fork-knife' },
+      { name: 'Service', icon: 'mdi:account-tie' }
+    ]
+  },
+  {
+    name: 'TV Studio',
+    category: 'Commercial',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Media', icon: 'mdi:television-classic' },
+      { name: 'Lighting', icon: 'mdi:spotlight' }
+    ]
+  },
+  {
+    name: 'Car Factory',
+    category: 'Industrial',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Automation', icon: 'mdi:robot-industrial' },
+      { name: 'Assembly', icon: 'mdi:cogs' }
+    ]
+  },
+  {
+    name: 'Power Plant',
+    category: 'Industrial',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Energy', icon: 'mdi:flash' },
+      { name: 'Infrastructure', icon: 'mdi:transmission-tower' }
+    ]
+  },
+  {
+    name: 'Warehouse',
+    category: 'Industrial',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Storage', icon: 'mdi:package-variant' },
+      { name: 'Logistics', icon: 'mdi:warehouse' }
+    ]
+  },
+  {
+    name: 'Hypermarket',
+    category: 'Industrial',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Retail', icon: 'mdi:cart' },
+      { name: 'High Traffic', icon: 'mdi:walk' }
+    ]
+  },
+  {
+    name: 'Elementary School',
+    category: 'Educational',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Classrooms', icon: 'mdi:school' },
+      { name: 'Playground', icon: 'mdi:slide' }
+    ]
+  },
+  {
+    name: 'University Building',
+    category: 'Educational',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Research', icon: 'mdi:magnify' },
+      { name: 'Lecture Halls', icon: 'mdi:presentation' }
+    ]
+  },
+  {
+    name: 'Public Library',
+    category: 'Educational',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Knowledge', icon: 'mdi:book-open-variant' },
+      { name: 'Quiet', icon: 'mdi:volume-off' }
+    ]
+  },
+  {
+    name: 'Conservatory',
+    category: 'Educational',
+    thumbnail: '/placeholder.jpg',
+    tags: [
+      { name: 'Music', icon: 'mdi:music' },
+      { name: 'Performance', icon: 'mdi:drama-masks' }
     ]
   }
 ];

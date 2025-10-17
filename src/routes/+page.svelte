@@ -3,7 +3,7 @@
   import { Canvas } from '@threlte/core';
   import Scene from '$lib/components/Scene.svelte';
   import { Pane, Checkbox, Button } from 'svelte-tweakpane-ui';
-  import { additionalExamples, projectExamples } from '$lib/data/examples';
+  import { exampleCategories, exampleScenes } from '$lib/data/examples';
 
   let scenes = $state([
     {
@@ -56,14 +56,14 @@
     <section class="space-y-6">
       <h2 class="text-center text-2xl font-bold tracking-tighter sm:text-3xl">Examples</h2>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {#each projectExamples as project}
+        {#each exampleCategories as category}
           <button
             class="group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800"
           >
             <div
               class="flex h-48 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
             >
-              <!-- <span class="text-2xl font-bold text-blue-600 dark:text-blue-300">{project.name}</span> -->
+              <!-- <span class="text-2xl font-bold text-blue-600 dark:text-blue-300">{category.name}</span> -->
             </div>
             <div
               class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -72,16 +72,16 @@
               <h3
                 class="font-semibold text-blue-600 drop-shadow-[0_0_9px_rgba(0,0,0,0.9)] group-hover:text-white dark:text-blue-300"
               >
-                {project.name}
+                {category.name}
               </h3>
             </div>
 
-            {#if project.tags && project.tags.length > 0}
+            {#if category.tags && category.tags.length > 0}
               <div
                 class="absolute bottom-0 left-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               >
                 <div class="flex flex-wrap gap-2">
-                  {#each project.tags as tag}
+                  {#each category.tags as tag}
                     <div
                       class="bg-opacity-70 flex items-center gap-1 rounded-full bg-black px-2 py-1 text-xs text-white backdrop-blur-sm"
                     >
@@ -98,14 +98,14 @@
     <div class="m-3"></div>
     <section class="space-y-6">
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-        {#each additionalExamples as project}
+        {#each exampleScenes as scene}
           <button
             class="group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800"
           >
             <div
               class="flex h-24 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
             >
-              <!-- <span class="text-sm font-bold text-blue-600 dark:text-blue-300">{project.name}</span> -->
+              <!-- <span class="text-sm font-bold text-blue-600 dark:text-blue-300">{scene.name}</span> -->
             </div>
             <div
               class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -114,16 +114,16 @@
               <h3
                 class="text-xs font-semibold text-blue-600 drop-shadow-[0_0_9px_rgba(0,0,0,0.9)] group-hover:text-white dark:text-blue-300"
               >
-                {project.name}
+                {scene.name}
               </h3>
             </div>
 
-            {#if project.tags && project.tags.length > 0}
+            {#if scene.tags && scene.tags.length > 0}
               <div
                 class="absolute bottom-0 left-0 p-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               >
                 <div class="flex flex-wrap gap-1">
-                  {#each project.tags as tag}
+                  {#each scene.tags as tag}
                     <div
                       class="bg-opacity-70 flex items-center gap-1 rounded-full bg-black px-1 py-0.5 text-xs text-white backdrop-blur-sm"
                     >
