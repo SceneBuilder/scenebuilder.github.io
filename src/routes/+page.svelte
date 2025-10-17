@@ -65,7 +65,7 @@
                 src={category.thumbnail}
                 alt={`${category.name} category thumbnail`}
                 loading="lazy"
-                class="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                class="block h-full w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
             </div>
@@ -74,7 +74,7 @@
             ></div>
             <div class="absolute top-0 left-0 p-4">
               <h3
-                class="font-semibold text-white drop-shadow-[0_0_9px_rgba(0,0,0,0.9)]"
+                class="font-semibold text-white drop-shadow-[0_0_12px_rgba(0,0,0,1)]"
               >
                 {category.name}
               </h3>
