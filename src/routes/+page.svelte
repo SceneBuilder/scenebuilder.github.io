@@ -20,11 +20,31 @@
     }
   ]);
 
+  let activeCategory = $state(exampleCategories[0]);
+  let activeScene = $state(
+    exampleScenes.find((scene) => scene.category === activeCategory?.name) ?? exampleScenes[0]
+  );
+
   function toggleFullscreen(element: HTMLElement) {
     if (!document.fullscreenElement) {
       element.requestFullscreen();
     } else {
       document.exitFullscreen();
+    }
+  }
+
+  function selectCategory(category: (typeof exampleCategories)[number]) {
+    activeCategory = category;
+    const firstSceneInCategory =
+      exampleScenes.find((scene) => scene.category === category.name) ?? activeScene;
+    activeScene = firstSceneInCategory;
+  }
+
+  function selectScene(scene: (typeof exampleScenes)[number]) {
+    activeScene = scene;
+    const relatedCategory = exampleCategories.find((category) => category.name === scene.category);
+    if (relatedCategory) {
+      activeCategory = relatedCategory;
     }
   }
 </script>
@@ -58,7 +78,9 @@
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {#each exampleCategories as category}
           <button
-            class="group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800"
+            class={`group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800 ${activeCategory?.name === category.name ? 'ring-2 ring-blue-500' : ''}`}
+            on:click={() => selectCategory(category)}
+            aria-pressed={activeCategory?.name === category.name}
           >
             <div class="relative h-48 w-full overflow-hidden">
               <img
@@ -104,7 +126,9 @@
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
         {#each exampleScenes as scene}
           <button
-            class="group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800"
+            class={`group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800 ${activeScene?.name === scene.name ? 'ring-2 ring-blue-500' : ''}`}
+            on:click={() => selectScene(scene)}
+            aria-pressed={activeScene?.name === scene.name}
           >
             <div
               class="flex h-24 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
