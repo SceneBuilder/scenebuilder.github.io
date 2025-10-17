@@ -1,15 +1,15 @@
 import devtoolsJson from 'vite-plugin-devtools-json';
-import imageOptimizer from 'vite-plugin-image-optimizer';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
     sveltekit(),
     devtoolsJson(),
-    imageOptimizer()
+    ViteImageOptimizer()
   ],
   build: {
     sourcemap: true,
