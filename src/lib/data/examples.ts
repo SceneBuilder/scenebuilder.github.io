@@ -19,7 +19,7 @@ export type ExampleScene = {
 export const exampleCategories: ExampleCategory[] = [
   {
     name: 'Residential',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/residential.jpg',
     tags: [
       { name: 'Living Spaces', icon: 'mdi:home' },
       { name: 'Comfort', icon: 'mdi:sofa' }
@@ -27,7 +27,7 @@ export const exampleCategories: ExampleCategory[] = [
   },
   {
     name: 'Commercial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/commercial.jpg',
     tags: [
       { name: 'Business', icon: 'mdi:briefcase' },
       { name: 'Hospitality', icon: 'mdi:silverware-fork-knife' }
@@ -35,7 +35,7 @@ export const exampleCategories: ExampleCategory[] = [
   },
   {
     name: 'Industrial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/industrial.jpg',
     tags: [
       { name: 'Production', icon: 'mdi:factory' },
       { name: 'Logistics', icon: 'mdi:warehouse' }
@@ -43,7 +43,7 @@ export const exampleCategories: ExampleCategory[] = [
   },
   {
     name: 'Educational',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/educational.jpg',
     tags: [
       { name: 'Learning', icon: 'mdi:school' },
       { name: 'Community', icon: 'mdi:account-group' }

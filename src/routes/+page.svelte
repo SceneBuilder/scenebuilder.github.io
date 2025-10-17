@@ -60,17 +60,21 @@
           <button
             class="group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800"
           >
-            <div
-              class="flex h-48 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
-            >
-              <!-- <span class="text-2xl font-bold text-blue-600 dark:text-blue-300">{category.name}</span> -->
+            <div class="relative h-48 w-full overflow-hidden">
+              <img
+                src={category.thumbnail}
+                alt={`${category.name} category thumbnail`}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
             </div>
             <div
               class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             ></div>
             <div class="absolute top-0 left-0 p-4">
               <h3
-                class="font-semibold text-blue-600 drop-shadow-[0_0_9px_rgba(0,0,0,0.9)] group-hover:text-white dark:text-blue-300"
+                class="font-semibold text-white drop-shadow-[0_0_9px_rgba(0,0,0,0.9)]"
               >
                 {category.name}
               </h3>
