@@ -55,7 +55,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Single Family Home',
     category: 'Residential',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/single-family-home.jpg',
     tags: [
       { name: 'Suburban', icon: 'mdi:home-group' },
       { name: 'Private', icon: 'mdi:lock' }
@@ -64,7 +64,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Apartment',
     category: 'Residential',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/apartment.jpg',
     tags: [
       { name: 'Urban', icon: 'mdi:city' },
       { name: 'Compact', icon: 'mdi:domain' }
@@ -73,7 +73,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Dormitory',
     category: 'Residential',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/dormitory.jpg',
     tags: [
       { name: 'Shared', icon: 'mdi:account-group' },
       { name: 'Student', icon: 'mdi:school' }
@@ -82,7 +82,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Hotel',
     category: 'Residential',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/hotel.jpg',
     tags: [
       { name: 'Hospitality', icon: 'mdi:briefcase-account' },
       { name: 'Suites', icon: 'mdi:bed-king' }
@@ -91,7 +91,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Corporate Office',
     category: 'Commercial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/corporate-office.jpg',
     tags: [
       { name: 'Workspace', icon: 'mdi:office-building' },
       { name: 'Open Plan', icon: 'mdi:view-grid' }
@@ -100,7 +100,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Hospital',
     category: 'Commercial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/hospital.jpg',
     tags: [
       { name: 'Healthcare', icon: 'mdi:hospital' },
       { name: 'Critical', icon: 'mdi:alert-circle' }
@@ -109,7 +109,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Restaurant',
     category: 'Commercial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/restaurant.jpg',
     tags: [
       { name: 'Dining', icon: 'mdi:silverware-fork-knife' },
       { name: 'Service', icon: 'mdi:account-tie' }
@@ -118,7 +118,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'TV Studio',
     category: 'Commercial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/tv-studio.jpg',
     tags: [
       { name: 'Media', icon: 'mdi:television-classic' },
       { name: 'Lighting', icon: 'mdi:spotlight' }
@@ -127,7 +127,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Car Factory',
     category: 'Industrial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/car-factory.jpg',
     tags: [
       { name: 'Automation', icon: 'mdi:robot-industrial' },
       { name: 'Assembly', icon: 'mdi:cogs' }
@@ -136,7 +136,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Power Plant',
     category: 'Industrial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/power-plant.jpg',
     tags: [
       { name: 'Energy', icon: 'mdi:flash' },
       { name: 'Infrastructure', icon: 'mdi:transmission-tower' }
@@ -145,7 +145,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Warehouse',
     category: 'Industrial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/warehouse.jpg',
     tags: [
       { name: 'Storage', icon: 'mdi:package-variant' },
       { name: 'Logistics', icon: 'mdi:warehouse' }
@@ -154,16 +154,16 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Hypermarket',
     category: 'Industrial',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/hypermarket.jpg',
     tags: [
       { name: 'Retail', icon: 'mdi:cart' },
       { name: 'High Traffic', icon: 'mdi:walk' }
     ]
   },
   {
-    name: 'Elementary School',
+    name: 'Kindergarten',
     category: 'Educational',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/kindergarten.jpg',
     tags: [
       { name: 'Classrooms', icon: 'mdi:school' },
       { name: 'Playground', icon: 'mdi:slide' }
@@ -172,7 +172,7 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'University Building',
     category: 'Educational',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/university.jpg',
     tags: [
       { name: 'Research', icon: 'mdi:magnify' },
       { name: 'Lecture Halls', icon: 'mdi:presentation' }
@@ -181,16 +181,16 @@ export const exampleScenes: ExampleScene[] = [
   {
     name: 'Public Library',
     category: 'Educational',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/public-library.jpg',
     tags: [
       { name: 'Knowledge', icon: 'mdi:book-open-variant' },
       { name: 'Quiet', icon: 'mdi:volume-off' }
     ]
   },
   {
-    name: 'Conservatory',
+    name: 'Music Room',
     category: 'Educational',
-    thumbnail: '/placeholder.jpg',
+    thumbnail: '/thumbnails/music-room.jpg',
     tags: [
       { name: 'Music', icon: 'mdi:music' },
       { name: 'Performance', icon: 'mdi:drama-masks' }

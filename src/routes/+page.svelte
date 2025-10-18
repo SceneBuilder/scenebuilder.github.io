@@ -24,6 +24,9 @@
   let activeScene = $state(
     exampleScenes.find((scene) => scene.category === activeCategory?.name) ?? exampleScenes[0]
   );
+  const filteredScenes = $derived(
+    exampleScenes.filter((scene) => scene.category === activeCategory?.name)
+  );
 
   function toggleFullscreen(element: HTMLElement) {
     if (!document.fullscreenElement) {
@@ -123,46 +126,56 @@
     </section>
     <div class="m-3"></div>
     <section class="space-y-6">
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
-        {#each exampleScenes as scene}
-          <button
-            class={`group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800 ${activeScene?.name === scene.name ? 'ring-2 ring-blue-500' : ''}`}
-            on:click={() => selectScene(scene)}
-            aria-pressed={activeScene?.name === scene.name}
-          >
-            <div
-              class="flex h-24 w-full items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800"
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {#if filteredScenes.length === 0}
+          <p class="col-span-full text-center text-sm text-muted-foreground">
+            No scenes available for this category yet.
+          </p>
+        {:else}
+          {#each filteredScenes as scene}
+            <button
+              class={`group relative block overflow-hidden rounded-lg border border-gray-200 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl dark:border-gray-800 ${activeScene?.name === scene.name ? 'ring-2 ring-blue-500' : ''}`}
+              on:click={() => selectScene(scene)}
+              aria-pressed={activeScene?.name === scene.name}
             >
-              <!-- <span class="text-sm font-bold text-blue-600 dark:text-blue-300">{scene.name}</span> -->
-            </div>
-            <div
-              class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            ></div>
-            <div class="absolute top-0 left-0 p-2">
-              <h3
-                class="text-xs font-semibold text-blue-600 drop-shadow-[0_0_9px_rgba(0,0,0,0.9)] group-hover:text-white dark:text-blue-300"
-              >
-                {scene.name}
-              </h3>
-            </div>
-
-            {#if scene.tags && scene.tags.length > 0}
-              <div
-                class="absolute bottom-0 left-0 p-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              >
-                <div class="flex flex-wrap gap-1">
-                  {#each scene.tags as tag}
-                    <div
-                      class="bg-opacity-70 flex items-center gap-1 rounded-full bg-black px-1 py-0.5 text-xs text-white backdrop-blur-sm"
-                    >
-                      <span class="text-xs">{tag.name}</span>
-                    </div>
-                  {/each}
-                </div>
+              <div class="relative h-48 w-full overflow-hidden">
+                <img
+                  src={scene.thumbnail}
+                  alt={`${scene.name} scene thumbnail`}
+                  loading="lazy"
+                  class="block h-full w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
               </div>
-            {/if}
-          </button>
-        {/each}
+              <div
+                class="bg-opacity-50 absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              ></div>
+              <div class="absolute top-0 left-0 p-4">
+                <h3
+                  class="font-semibold text-white drop-shadow-[0_0_12px_rgba(0,0,0,1)]"
+                >
+                  {scene.name}
+                </h3>
+              </div>
+
+              {#if scene.tags && scene.tags.length > 0}
+                <div
+                  class="absolute bottom-0 left-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                >
+                  <div class="flex flex-wrap gap-2">
+                    {#each scene.tags as tag}
+                      <div
+                        class="bg-opacity-70 flex items-center gap-1 rounded-full bg-black px-2 py-1 text-xs text-white backdrop-blur-sm"
+                      >
+                        <span>{tag.name}</span>
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+              {/if}
+            </button>
+          {/each}
+        {/if}
       </div>
     </section>
   </div>
